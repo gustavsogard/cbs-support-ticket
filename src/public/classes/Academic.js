@@ -1,5 +1,3 @@
-const User = require("./User");
-
 class Academic extends User {
   constructor(
     userId,

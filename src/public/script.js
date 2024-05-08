@@ -9,9 +9,54 @@ async function fetchUsers() {
   };
 
   const users = {
-    itEmployees: await fetchJson("/api/users/it-employees"),
-    academics: await fetchJson("/api/users/academics"),
-    students: await fetchJson("/api/users/students"),
+    itEmployees: await fetchJson("/api/users/it-employees").then((users) =>
+      users.map(
+        (user) =>
+          new ITEmployee(
+            user.userId,
+            user.name,
+            user.email,
+            user.password,
+            user.status,
+            user.createdAt,
+            user.passwordChangedAt,
+            user.employeeNumber
+          )
+      )
+    ),
+    academics: await fetchJson("/api/users/academics").then((users) =>
+      users.map(
+        (user) =>
+          new Academic(
+            user.userId,
+            user.name,
+            user.email,
+            user.password,
+            user.status,
+            user.createdAt,
+            user.passwordChangedAt,
+            user.academicId,
+            user.title,
+            user.department,
+            user.phone
+          )
+      )
+    ),
+    students: await fetchJson("/api/users/students").then((users) =>
+      users.map(
+        (user) =>
+          new Student(
+            user.userId,
+            user.name,
+            user.email,
+            user.password,
+            user.status,
+            user.createdAt,
+            user.passwordChangedAt,
+            user.studentNumber
+          )
+      )
+    ),
   };
 
   return users;

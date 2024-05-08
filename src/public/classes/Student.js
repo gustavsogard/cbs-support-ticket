@@ -1,5 +1,3 @@
-const User = require("./User");
-
 class Student extends User {
   constructor(
     userId,
@@ -19,5 +17,3 @@ class Student extends User {
     // Implement student card order API call
   }
 }
-
-module.exports = Student;

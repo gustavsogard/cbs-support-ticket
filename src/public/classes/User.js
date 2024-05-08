@@ -33,5 +33,3 @@ class User {
     // Implement ticket response API call
   }
 }
-
-module.exports = User;

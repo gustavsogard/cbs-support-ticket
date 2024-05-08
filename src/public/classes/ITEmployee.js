@@ -1,5 +1,3 @@
-const User = require("./User");
-
 class ITEmployee extends User {
   constructor(
     userId,
@@ -35,5 +33,3 @@ class ITEmployee extends User {
     // Implement identity verification API call
   }
 }
-
-module.exports = ITEmployee;
