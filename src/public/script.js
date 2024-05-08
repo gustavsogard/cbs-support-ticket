@@ -100,8 +100,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             throw new Error("Ticket was not created");
           }
         })
-        .then((data) => {
-          console.log(data);
+        .then(() => {
           fetch("/api/support-tickets")
             .then((response) => response.json())
             .then((data) => {
