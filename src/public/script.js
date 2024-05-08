@@ -62,19 +62,57 @@ async function fetchUsers() {
   return users;
 }
 
+const renderTickets = (tickets, users) => {
+  const content = document.getElementsByClassName("content")[0];
+  content.innerHTML = "";
+  const ticketDiv = document.createElement("div");
+  ticketDiv.className = "ticket-table";
+  tickets.forEach((ticket) => {
+    const ticketElement = document.createElement("div");
+    ticketElement.className = "ticket";
+    ticketElement.innerHTML = `
+      <p><span class="span-header">Sagsnavn:</span> ${ticket.title}</p>
+      <p><span class="span-header">Beskrivelse:</span> ${ticket.description}</p>
+      <p><span class="span-header">Oprettet af:</span> ${
+        [...users.students, ...users.academics, ...users.itEmployees]
+          .find(
+            (user) =>
+              user.employeeNumber === ticket.createdBy ||
+              user.studentNumber === ticket.createdBy ||
+              user.academicId === ticket.createdBy
+          )
+          ?.email?.split("@")[0]
+      }</p>
+      <p><span class="span-header">Tildelt til:</span> ${
+        users.itEmployees
+          .find((user) => user.employeeNumber === ticket.assignedTo)
+          ?.email?.split("@")[0]
+      }</p>
+      <p><span class="span-header">Påvirket bruger:</span> ${
+        [...users.students, ...users.academics]
+          .find(
+            (user) =>
+              user.studentNumber === ticket.affectedUser ||
+              user.academicId === ticket.affectedUser
+          )
+          ?.email?.split("@")[0]
+      }</p>
+      <p><span class="span-header">Kategori:</span> ${ticket.category}</p>
+      <p><span class="span-header">Status:</span> ${ticket.status}</p>
+      <p><span class="span-header">Oprettet:</span> ${ticket.createdAt}</p>
+      <p><span class="span-header">Sagsnummer:</span> ${ticket.ticketId}</p>
+    `;
+    ticketDiv.appendChild(ticketElement);
+  });
+  content.appendChild(ticketDiv);
+};
+
 document.addEventListener("DOMContentLoaded", async function () {
   const users = await fetchUsers();
 
   fetch("/api/support-tickets")
     .then((response) => response.json())
-    .then((data) => {
-      const ticketList = document.getElementsByClassName("content")[0];
-      data.forEach((ticket) => {
-        const ticketElement = document.createElement("li");
-        ticketElement.textContent = ticket.title;
-        ticketList.appendChild(ticketElement);
-      });
-    });
+    .then((data) => renderTickets(data, users));
 
   const createButton = document.getElementById("create-ticket");
   createButton.addEventListener("click", async function () {
@@ -93,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const option = document.createElement("option");
       option.value =
         user.employeeNumber || user.studentNumber || user.academicId;
-      option.textContent = user.name;
+      option.textContent = `${user.email?.split("@")[0]} (${user.name})`;
       return option;
     };
 
@@ -148,15 +186,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         .then(() => {
           fetch("/api/support-tickets")
             .then((response) => response.json())
-            .then((data) => {
-              const ticketList = document.getElementsByClassName("content")[0];
-              ticketList.innerHTML = "";
-              data.forEach((ticket) => {
-                const ticketElement = document.createElement("li");
-                ticketElement.textContent = ticket.title;
-                ticketList.appendChild(ticketElement);
-              });
-            });
+            .then((data) => renderTickets(data, users));
         })
         .catch((error) => {
           console.error(error);

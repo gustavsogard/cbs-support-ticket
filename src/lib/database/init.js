@@ -10,7 +10,7 @@ const init = () => {
       `INSERT INTO support_tickets (title, description, createdBy, assignedTo, affectedUser, category) VALUES 
       ('Outlook er stoppet med at åbne automatisk', 'Den plejede altid at åbne automatisk, nu gør den ikke længere.', 'A1001', 'E1001', 'A1001', 'Hardware'),
       ('Studentermedarbejders adgang til system', 'De har brug for adgang til systemet for at kunne udføre deres arbejde.', 'A1001', 'E1001', 'A1001', 'Acess management'),
-      ('Min Mycbs ser mærkelig', 'Der mangler en masse ikoner.', 'S162392', 'E1001', 'S162392', 'Software'),
+      ('Min Mycbs ser mærkelig', 'Der mangler en masse ikoner.', 'S162392', 'E1001', 'S162392', 'Software')
       `
     );
     db.run(
