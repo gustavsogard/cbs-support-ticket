@@ -6,7 +6,9 @@
   <label for="assignedTo">Ansvarlig</label>
   <input type="text" name="assignedTo" id="assignedTo" required>
   <label for="affectedUser">Påvirket bruger</label>
-  <input type="text" name="affectedUser" id="affectedUser" required>
+  <select name="affectedUser" id="affectedUser" required>
+    <option value="" disabled selected>Vælg bruger</option>
+  </select>
   <label for="category">Kategori</label>
   <select name="category" id="category" required>
     <option value="Hardware">Hardware</option>

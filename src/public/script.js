@@ -2,11 +2,24 @@ const userLoggedIn = {
   employeeNumber: "E1001",
 };
 
-const users = {
-  itEmployees: fetch("/api/it-employees").then((response) => response.json()),
-};
+async function fetchUsers() {
+  const fetchJson = async (url) => {
+    const response = await fetch(url);
+    return response.json();
+  };
 
-document.addEventListener("DOMContentLoaded", function () {
+  const users = {
+    itEmployees: await fetchJson("/api/users/it-employees"),
+    academics: await fetchJson("/api/users/academics"),
+    students: await fetchJson("/api/users/students"),
+  };
+
+  return users;
+}
+
+const users = fetchUsers();
+
+document.addEventListener("DOMContentLoaded", async function () {
   fetch("/api/support-tickets")
     .then((response) => response.json())
     .then((data) => {
@@ -36,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const affectedUser = getValue("affectedUser");
       const category = getValue("category");
 
-      const createdBy = "admin";
+      const createdBy = "E1001";
 
       const ticket = {
         title,
