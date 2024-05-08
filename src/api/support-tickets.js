@@ -9,7 +9,7 @@ const {
 router.post("/", async (req, res) => {
   try {
     await createSupportTicket(req.body);
-    res.status(201).redirect("/");
+    res.status(201).json({ message: "Ticket created" });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

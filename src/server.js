@@ -8,12 +8,14 @@ const path = require("path");
 const { init } = require("./lib/init");
 init();
 
+app.use(express.json());
+
 const clientRoutes = require("./routes/client");
-const supportTicketApi = require("./api/support-tickets");
+const supportTicketsApi = require("./api/support-tickets");
 
 app.use("/public", express.static(path.join(__dirname, "public")));
 app.use("/", clientRoutes);
-app.use("/api/support-tickets", supportTicketApi);
+app.use("/api/support-tickets", supportTicketsApi);
 
 http.listen(port, host, () => {
   console.log(`Serveren kører på http://${host}:${port}`);

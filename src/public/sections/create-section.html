@@ -1,13 +1,18 @@
-<h1>Create Support Ticket</h1>
 <form action="http://localhost:3000/api/support-tickets" method="POST">
-  <label for="title">Title</label>
+  <label for="title">Titel</label>
   <input type="text" name="title" id="title" required>
-  <br>
-  <label for="description">Description</label>
+  <label for="description">Beskrivelse</label>
   <textarea name="description" id="description" required></textarea>
-  <br>
-  <label for="email">Email</label>
-  <input type="email" name="email" id="email" required>
-  <br>
-  <button type="submit">Create Ticket</button>
+  <label for="assignedTo">Ansvarlig</label>
+  <input type="text" name="assignedTo" id="assignedTo" required>
+  <label for="affectedUser">Påvirket bruger</label>
+  <input type="text" name="affectedUser" id="affectedUser" required>
+  <label for="category">Kategori</label>
+  <select name="category" id="category" required>
+    <option value="Hardware">Hardware</option>
+    <option value="Software">Software</option>
+    <option value="Network">Netværk</option>
+    <option value="Other">Anden</option>
+  </select>
+  <button id="support-ticket-submit" type="submit">Opret sag</button>
 </form>
