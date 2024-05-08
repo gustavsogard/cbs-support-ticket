@@ -100,7 +100,7 @@ const renderTickets = (tickets, users) => {
       <p><span class="span-header">Kategori:</span> ${ticket.category}</p>
       <p><span class="span-header">Status:</span> ${ticket.status}</p>
       <p><span class="span-header">Oprettet:</span> ${ticket.createdAt}</p>
-      <p><span class="span-header">Sagsnummer:</span> IR ${ticket.ticketId}</p>
+      <p><span class="span-header">Sagsnummer:</span> IR${ticket.ticketId}</p>
     `;
     ticketDiv.appendChild(ticketElement);
   });
