@@ -124,8 +124,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     const assignedToSelect = document.getElementById("assignedTo");
     const affectedUserSelect = document.getElementById("affectedUser");
-    assignedToSelect.innerHTML = "";
-    affectedUserSelect.innerHTML = "";
 
     const createOption = (user) => {
       const option = document.createElement("option");
@@ -157,7 +155,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       const affectedUser = getValue("affectedUser");
       const category = getValue("category");
 
-      const createdBy = "E1001";
+      const createdBy = userLoggedIn.employeeNumber;
 
       const ticket = {
         title,

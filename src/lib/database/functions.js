@@ -21,7 +21,7 @@ const createSupportTicket = (ticket) => {
     !ticket.affectedUser ||
     !ticket.category
   ) {
-    throw new Error("Title and description are required");
+    throw new Error("Missing required fields");
   }
 
   return new Promise((resolve, reject) => {
