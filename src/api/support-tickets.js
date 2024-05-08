@@ -4,7 +4,7 @@ const router = express.Router();
 const {
   getAllSupportTickets,
   createSupportTicket,
-} = require("../lib/functions");
+} = require("../lib/database/functions");
 
 router.post("/", async (req, res) => {
   try {

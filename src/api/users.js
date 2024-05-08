@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllUsers } = require("../lib/functions");
+const { getAllUsers } = require("../lib/database/functions");
 
 router.get("/it-employees", (req, res) => {
   getAllUsers("it_employees")

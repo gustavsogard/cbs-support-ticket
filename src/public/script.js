@@ -2,6 +2,12 @@ const userLoggedIn = {
   employeeNumber: "E1001",
 };
 
+const users = {
+  itEmployees: fetch("http://localhost:3000/api/users/it-employees").then(
+    (response) => response.json()
+  ),
+};
+
 document.addEventListener("DOMContentLoaded", function () {
   fetch("http://localhost:3000/api/support-tickets")
     .then((response) => response.json())
