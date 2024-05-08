@@ -46,7 +46,7 @@ const createSupportTicket = (ticket) => {
   });
 };
 
-const getAllUsers = (type = "it_employees") => {
+const getAllUsers = (type) => {
   return new Promise((resolve, reject) => {
     db.all(`SELECT * FROM ${type}`, (err, rows) => {
       if (err) {

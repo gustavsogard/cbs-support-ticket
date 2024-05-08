@@ -18,6 +18,8 @@ async function fetchUsers() {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
+  const users = await fetchUsers();
+
   fetch("/api/support-tickets")
     .then((response) => response.json())
     .then((data) => {
@@ -37,7 +39,6 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementsByClassName("content")[0].innerHTML = data;
       });
 
-    const users = await fetchUsers();
     const assignedToSelect = document.getElementById("assignedTo");
     const affectedUserSelect = document.getElementById("affectedUser");
     assignedToSelect.innerHTML = "";
