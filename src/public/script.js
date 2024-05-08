@@ -17,8 +17,6 @@ async function fetchUsers() {
   return users;
 }
 
-const users = fetchUsers();
-
 document.addEventListener("DOMContentLoaded", async function () {
   fetch("/api/support-tickets")
     .then((response) => response.json())
@@ -38,6 +36,32 @@ document.addEventListener("DOMContentLoaded", async function () {
       .then((data) => {
         document.getElementsByClassName("content")[0].innerHTML = data;
       });
+
+    const users = await fetchUsers();
+    const assignedToSelect = document.getElementById("assignedTo");
+    const affectedUserSelect = document.getElementById("affectedUser");
+    assignedToSelect.innerHTML = "";
+    affectedUserSelect.innerHTML = "";
+
+    const createOption = (user) => {
+      const option = document.createElement("option");
+      option.value =
+        user.employeeNumber || user.studentNumber || user.academicId;
+      option.textContent = user.name;
+      return option;
+    };
+
+    users.itEmployees.forEach((user) => {
+      assignedToSelect.appendChild(createOption(user));
+    });
+
+    users.students.forEach((user) => {
+      affectedUserSelect.appendChild(createOption(user));
+    });
+
+    users.academics.forEach((user) => {
+      affectedUserSelect.appendChild(createOption(user));
+    });
 
     const submitButton = document.getElementById("support-ticket-submit");
     submitButton.addEventListener("click", async function (event) {
