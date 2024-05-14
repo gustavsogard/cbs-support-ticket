@@ -66,14 +66,35 @@ const renderTickets = (tickets, users) => {
   const content = document.getElementsByClassName("content")[0];
   content.innerHTML = "";
   const ticketDiv = document.createElement("div");
-  ticketDiv.className = "ticket-table";
+  ticketDiv.className = "ticket-div";
+  ticketDiv.innerHTML = `
+    <h2>Åbne sager</h2>
+  `;
+  const ticketTable = document.createElement("table");
+  const ticketHeader = document.createElement("tr");
+  ticketHeader.innerHTML = `
+    <th>Sagsnummer</th>
+    <th>Sagsnavn</th>
+    <th>Beskrivelse</th>
+    <th>Oprettet af</th>
+    <th>Tildelt til</th>
+    <th>Påvirket bruger</th>
+    <th>Kategori</th>
+    <th>Status</th>
+    <th>Oprettet</th>
+  `;
+  ticketTable.appendChild(ticketHeader);
+  ticketDiv.appendChild(ticketTable);
+
   tickets.forEach((ticket) => {
-    const ticketElement = document.createElement("div");
-    ticketElement.className = "ticket";
+    const ticketElement = document.createElement("tr");
+    const date = new Date(ticket.createdAt);
+
     ticketElement.innerHTML = `
-      <p><span class="span-header">Sagsnavn:</span> ${ticket.title}</p>
-      <p><span class="span-header">Beskrivelse:</span> ${ticket.description}</p>
-      <p><span class="span-header">Oprettet af:</span> ${
+      <td>IR${ticket.ticketId}</td>
+      <td>${ticket.title}</td>
+      <td>${ticket.description}</td>
+      <td>${
         [...users.students, ...users.academics, ...users.itEmployees]
           .find(
             (user) =>
@@ -82,13 +103,13 @@ const renderTickets = (tickets, users) => {
               user.academicId === ticket.createdBy
           )
           ?.email?.split("@")[0]
-      }</p>
-      <p><span class="span-header">Tildelt til:</span> ${
+      }</td>
+      <td> ${
         users.itEmployees
           .find((user) => user.employeeNumber === ticket.assignedTo)
           ?.email?.split("@")[0]
-      }</p>
-      <p><span class="span-header">Påvirket bruger:</span> ${
+      }</td>
+      <td> ${
         [...users.students, ...users.academics]
           .find(
             (user) =>
@@ -96,13 +117,15 @@ const renderTickets = (tickets, users) => {
               user.academicId === ticket.affectedUser
           )
           ?.email?.split("@")[0]
-      }</p>
-      <p><span class="span-header">Kategori:</span> ${ticket.category}</p>
-      <p><span class="span-header">Status:</span> ${ticket.status}</p>
-      <p><span class="span-header">Oprettet:</span> ${ticket.createdAt}</p>
-      <p><span class="span-header">Sagsnummer:</span> IR${ticket.ticketId}</p>
+      }</td>
+      <td>${ticket.category}</td>
+      <td>${ticket.status}</td>
+      <td>${date.toLocaleDateString()} ${date.toLocaleTimeString()}</td>
     `;
-    ticketDiv.appendChild(ticketElement);
+    ticketElement.onclick = async function () {
+      alert(`Du har klikket på sagsnummer: IR${ticket.ticketId}`);
+    };
+    ticketTable.appendChild(ticketElement);
   });
   content.appendChild(ticketDiv);
 };
