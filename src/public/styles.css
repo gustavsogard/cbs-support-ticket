@@ -30,9 +30,20 @@ body {
 
 .navbar-content {
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: 6px;
   width: 100%;
+}
+.navbar-content button:first-child {
+  margin-bottom: 10px;
+}
+.navbar-content hr {
+  margin: 0 0;
+  margin-bottom: 10px;
+  width: 95%;
+  border: 0;
+  border-top: 1px solid #bababa;
 }
 
 .navbar .lower-content {
@@ -57,7 +68,7 @@ body {
   font-weight: 400;
 }
 
-.navbar button:not(:nth-child(2)) {
+.navbar button {
   width: 100%;
 }
 
@@ -117,23 +128,6 @@ button {
 .navbar a {
   text-decoration: none;
   width: 100%;
-}
-
-#search-user {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  gap: 6px;
-  margin-bottom: 8px;
-}
-#search-user button:first-child {
-  width: 100%;
-}
-#search-user button:last-child {
-  min-width: 40px;
-  padding: 0;
-  justify-content: center;
 }
 
 .content {
