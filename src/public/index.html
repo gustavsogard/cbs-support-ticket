@@ -20,28 +20,40 @@
 <body>
   <div class="main">
     <div class="navbar">
-      <image id="logo" src="/public/images/cbs-logo.png" alt="logo" />
-      <div class="navbar-content">
-        <div id="search-user">
-          <button id="create-ticket" class="secondary-button">
-            <image src="/public/images/plus-icon.svg" alt="ticket" />
-            Opret ny sag
-          </button>
-          <button class="secondary-button"
-            onclick="window.open(`https://www.figma.com/proto/wrWij5v5SUI9S2yRdOsVuO/Pr%C3%A6sentationsprototype?node-id=97-195&t=tsCbLHazaTTRA3Fx-0&scaling=contain&page-id=0%3A1&starting-point-node-id=2%3A18`, 'blank')">
-            <image src="/public/images/search-icon.svg" alt="search" />
+      <div class="upper-content">
+        <image id="logo" src="/public/images/cbs-logo.png" alt="logo" />
+        <div class="navbar-content">
+          <div id="search-user">
+            <button id="create-ticket" class="secondary-button">
+              <image src="/public/images/plus-icon.svg" alt="ticket" />
+              Opret ny sag
+            </button>
+            <button class="secondary-button"
+              onclick="window.open(`https://www.figma.com/proto/wrWij5v5SUI9S2yRdOsVuO/Pr%C3%A6sentationsprototype?node-id=97-195&t=tsCbLHazaTTRA3Fx-0&scaling=contain&page-id=0%3A1&starting-point-node-id=2%3A18`, 'blank')">
+              <image src="/public/images/search-icon.svg" alt="search" />
+            </button>
+          </div>
+          <a href="/">
+            <button id="all-tickets" class="primary-button">
+              <image src="/public/images/ticket-icon.svg" alt="ticket" />
+              Se alle sager
+            </button>
+          </a>
+          <button id="all-tickets" class="primary-button">
+            <image src="/public/images/settings-icon.svg" alt="settings" />
+            Indstillinger
           </button>
         </div>
-        <a href="/">
-          <button id="all-tickets" class="primary-button">
-            <image src="/public/images/ticket-icon.svg" alt="ticket" />
-            Se alle sager
-          </button>
-        </a>
-        <button id="all-tickets" class="primary-button">
-          <image src="/public/images/settings-icon.svg" alt="settings" />
-          Indstillinger
-        </button>
+      </div>
+      <div class="lower-content">
+        <div>
+          <image src="/public/images/avatar-icon.svg" alt="avatar" />
+          <div class="user-info">
+            <h1>Steve Thorsen</h1>
+            <h2>st.it@cbs.dk</h2>
+          </div>
+        </div>
+        <image src="/public/images/logout-icon.svg" alt="logout" />
       </div>
     </div>
     <div class="content">
