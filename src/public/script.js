@@ -133,10 +133,6 @@ const renderTickets = (tickets, users) => {
 document.addEventListener("DOMContentLoaded", async function () {
   const users = await fetchUsers();
 
-  fetch("/api/support-tickets")
-    .then((response) => response.json())
-    .then((data) => renderTickets(data, users));
-
   const createButton = document.getElementById("create-ticket");
   createButton.addEventListener("click", async function () {
     await fetch("/public/sections/create-section.html")
@@ -214,4 +210,13 @@ document.addEventListener("DOMContentLoaded", async function () {
         });
     });
   });
+
+  if (new URLSearchParams(window.location.search).has("create")) {
+    createButton.click();
+    return;
+  }
+
+  fetch("/api/support-tickets")
+    .then((response) => response.json())
+    .then((data) => renderTickets(data, users));
 });
