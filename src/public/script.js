@@ -204,6 +204,8 @@ document.addEventListener("DOMContentLoaded", async function () {
           fetch("/api/support-tickets")
             .then((response) => response.json())
             .then((data) => renderTickets(data, users));
+
+          alert("Sagen er oprettet");
         })
         .catch((error) => {
           console.error(error);
