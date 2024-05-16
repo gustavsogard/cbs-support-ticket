@@ -68,7 +68,7 @@ const renderTickets = (tickets, users) => {
   const ticketDiv = document.createElement("div");
   ticketDiv.className = "ticket-div";
   ticketDiv.innerHTML = `
-    <h2>Åbne sager</h2>
+    <h2>Alle sager</h2>
   `;
   const ticketTable = document.createElement("table");
   const ticketHeader = document.createElement("tr");

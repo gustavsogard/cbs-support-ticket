@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .main {
@@ -13,58 +13,97 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #e3f5ff;
+  padding: 10px;
+  padding-top: 40px;
+  background-color: #f5fbff;
+  width: 220px;
 }
 
 .navbar-content {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-}
-
-#logo {
-  width: 60%;
-}
-
-button {
-  background-color: #4068af;
-  border: none;
-  border-radius: 6px;
-  height: 40px;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  padding: 0 10px;
-  transition: background-color 0.1s;
-}
-
-.navbar button {
+  gap: 6px;
   width: 100%;
 }
 
-button:hover {
-  background-color: #2e4a7d;
+.navbar button:not(:nth-child(2)) {
+  width: 100%;
 }
 
-button:active {
-  background-color: #1c304f;
+#create-ticket,
+#all-tickets {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 8px;
+}
+
+#logo {
+  width: 80%;
+  margin-bottom: 40px;
+}
+
+button {
+  border: none;
+  border-radius: 6px;
+  height: 40px;
+  color: black;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  cursor: pointer;
+  padding: 0 14px;
+  transition: background-color 0.1s;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+
+.primary-button {
+  background-color: #ebf2ff;
+  color: black;
+}
+
+.secondary-button {
+  background-color: white;
+  border: 1px solid #bababa;
+}
+
+.primary-button:hover {
+  background-color: #dce6f9;
+}
+
+.primary-button:active {
+  background-color: #c8d9f2;
+}
+
+.secondary-button:hover {
+  border: 1px solid #7f7f7f;
+}
+
+.secondary-button:active {
+  background-color: #f0f0f0;
 }
 
 .navbar a {
   text-decoration: none;
+  width: 100%;
 }
 
 #search-user {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 6px;
+  margin-bottom: 8px;
 }
-#search-user input {
-  margin-right: 10px;
-  border-radius: 6px;
-  border: 1px solid black;
-  padding: 10px;
+#search-user button:first-child {
+  width: 100%;
+}
+#search-user button:last-child {
+  min-width: 40px;
+  padding: 0;
+  justify-content: center;
 }
 
 .content {
@@ -124,6 +163,7 @@ textarea {
   text-align: left;
   padding-bottom: 10px;
   cursor: default;
+  font-size: 12px;
 }
 
 .ticket-div td {
@@ -141,5 +181,5 @@ textarea {
 }
 
 .ticket-div tr:hover:not(:first-child) {
-  background-color: #ecf6ff;
+  background-color: #ebf2ff;
 }
