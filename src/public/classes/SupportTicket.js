@@ -20,8 +20,4 @@ class SupportTicket {
     this.category = category;
     this.affectedUser = affectedUser;
   }
-
-  createSupportTicket() {
-    // Implement support ticket creation API call
-  }
 }
