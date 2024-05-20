@@ -1,4 +1,5 @@
 # Vertikal Prototype for Håndtering af Supportsager i IT-afdelingen på CBS
+![cbs-logo](https://github.com/gustavsogard/cbs-support-ticket/assets/108490100/653b8095-f786-4f14-ba23-ade64177bf00)
 
 ## Formål 📖
 Formålet med denne kodebase er at demonstrere en vertikal prototype af håndtering af supportsager – og at vise, hvordan fremtidig udvikling kan bygge videre på denne prototype.
