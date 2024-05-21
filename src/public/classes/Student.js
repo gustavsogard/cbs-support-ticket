@@ -12,4 +12,8 @@ class Student extends User {
     super(userId, name, email, password, status, createdAt, passwordChangedAt);
     this.studentNumber = studentNumber;
   }
+
+  orderStudentCard() {
+    // Implement student card ordering API call
+  }
 }
